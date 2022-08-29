@@ -1,5 +1,6 @@
 import express from "express";
 import * as bookController from "../controllers/bookController.js";
+import createBookValidator from "../middlewares/createBookValidator.js";
 
 const router = express.Router();
 
@@ -9,7 +10,7 @@ const router = express.Router();
 router
   .route("/books")
   .get(bookController.getAllBooks)
-  .post(bookController.createBooks);
+  .post(createBookValidator,bookController.createBooks);
 
 router
   .route("/books/:id")
